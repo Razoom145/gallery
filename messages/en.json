@@ -1,95 +1,146 @@
 {
-  "common": {
-    "loading": "Loading...",
-    "save": "Save",
-    "cancel": "Cancel",
-    "delete": "Delete",
-    "edit": "Edit",
-    "close": "Close",
-    "back": "Back",
-    "create": "Create",
-    "add": "Add",
-    "update": "Update",
-    "submit": "Submit",
-    "search": "Search",
-    "settings": "Settings",
-    "logout": "Logout",
-    "language": "Language",
-    "connected": "Connected",
-    "notConnected": "Not connected"
-  },
-
-  "auth": {
-    "welcomeBack": "Welcome back",
-    "createAccount": "Create account",
-    "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "email": "Email",
-    "password": "Password",
-    "confirmPassword": "Confirm password",
-    "username": "Username",
-    "invalidCredentials": "Invalid email or password",
-    "passwordMismatch": "Passwords do not match",
-    "unexpectedError": "An unexpected error occurred",
-    "connectionError": "Connection error"
-  },
-
-  "dashboard": {
-    "title": "Today's Notes",
-    "loggedAs": "Logged as",
-    "emptyTasks": "No tasks yet. Click “Add” to create a new task.",
-    "addTask": "Add task",
-    "todayNotes": "Today's Notes"
-  },
-
-  "task": {
-    "newTodo": "New Todo",
-    "title": "Title",
-    "details": "Details",
-    "priority": "Priority",
-    "timeStart": "Start time",
-    "timeEnd": "End time",
-    "writeTask": "Write your task...",
-    "littleNotes": "Little notes here...",
-    "low": "Low",
-    "medium": "Medium",
-    "high": "High",
-    "completed": "Completed"
-  },
-
-  "settings": {
-    "profileSettings": "Profile Settings",
-    "general": "General",
-    "security": "Security",
-    "integrations": "Integrations",
-    "changePassword": "Change Password",
-    "currentPassword": "Current password",
-    "newPassword": "New password",
-    "confirmNewPassword": "Confirm new password",
-    "passwordUpdated": "Password updated successfully",
-    "languageInterface": "Interface language",
-    "chooseLanguage": "Choose your preferred language for the app and notifications",
-    "linkedAccounts": "Linked accounts"
-  },
-
-  "integrations": {
-    "telegramBot": "Telegram Bot",
-    "connectBot": "Connect bot",
-    "telegramDescription": "Receive reminders and task reports directly in Telegram",
-    "googleAccount": "Google Account",
-    "githubAccount": "GitHub Account"
-  },
-
-  "menu": {
-    "home": "Home",
-    "dashboard": "Dashboard",
-    "deleteAccount": "Delete Account",
-    "settings": "Settings",
-    "logout": "Logout"
-  },
-
-  "alerts": {
-    "deleteAccountConfirm": "Are you sure you want to delete your account? All tasks will be permanently deleted.",
-    "deleteAccountError": "Failed to delete account. Please try again later."
-  }
+  "picture": [
+    {
+      "title": "A Domestic Interior",
+      "author": "Charles Joseph Grips",
+      "year": "1881",
+      "history_and_about": "Charles Joseph Grips was a renowned Dutch genre painter who specialized in recreating the atmosphere of historic interiors inspired by the Dutch Golden Age of the 17th century. The painting 'A Domestic Interior' (1881) is a vivid example of his refined style. The artist depicted everyday domestic life with remarkable precision, carefully rendering kitchen utensils, decorative wall tiles, and the play of light and shadow. Such paintings were popular among wealthy European and American collectors of the late nineteenth century who admired the comfort, order, and tranquility of earlier times.",
+      "png": "/image/Interior.jpg",
+      "alt": "Painting A Domestic Interior"
+    },
+    {
+      "title": "Tama the Cat",
+      "author": "Hiroaki Takahashi (Shōtei)",
+      "year": "1926",
+      "history_and_about": "Hiroaki Takahashi was one of the leading artists of the Shin-hanga movement, which revived traditional ukiyo-e printmaking in the twentieth century. In 1923, the devastating Great Kantō Earthquake destroyed many printing blocks and the workshop of publisher Shōzaburō Watanabe, with whom the artist collaborated. Created in 1926, 'Tama the Cat' became part of the effort to rebuild the publisher's catalog and create new works. The print portrays a beloved domestic cat with elegance, softness, and realism, reflecting the desire of Japanese society to capture peaceful and comforting moments after a national tragedy.",
+      "png": "/image/cat.jpg",
+      "alt": "Woodblock print Tama the Cat"
+    },
+    {
+      "title": "Mona Lisa",
+      "author": "Leonardo da Vinci",
+      "year": "1503–1506 (with revisions until 1519)",
+      "history_and_about": "The painting is generally believed to depict Lisa Gherardini, the wife of Florentine silk merchant Francesco del Giocondo. Leonardo never delivered the work to the patron and instead kept refining it throughout his life. The painting is famous for its use of sfumato, a technique that softens outlines and transitions, and for the mysterious smile that appears to change depending on the viewer's perspective. Its worldwide fame increased dramatically after its theft from the Louvre in 1911 by Vincenzo Peruggia.",
+      "png": "/image/Mona.jpg",
+      "alt": "Mona Lisa"
+    },
+    {
+      "title": "The Starry Night",
+      "author": "Vincent van Gogh",
+      "year": "1889",
+      "history_and_about": "The painting was created at the Saint-Paul-de-Mausole asylum in Saint-Rémy-de-Provence during a difficult period of the artist's life. Van Gogh painted the work from memory and imagination, inspired by the view from his window. The swirling sky and dynamic forms are often interpreted as reflections of the artist's emotions, spiritual search, and fascination with the vastness of the universe.",
+      "png": "/image/Van.jpg",
+      "alt": "The Starry Night by Vincent van Gogh"
+    },
+    {
+      "title": "Beach Scene (View of Scheveningen Beach)",
+      "author": "Hendrick van Anthonissen",
+      "year": "1641",
+      "history_and_about": "This painting by the Dutch marine artist became famous after a restoration discovery in 2014. During the cleaning process, conservators uncovered a beached whale that had been painted over in the past. The discovery completely changed the interpretation of the scene and restored the original meaning of the artwork.",
+      "png": "/image/View.jpg",
+      "alt": "Beach Scene"
+    },
+    {
+      "title": "The Militia Company of Captain Frans Banning Cocq and Lieutenant Willem van Ruytenburch (The Night Watch)",
+      "author": "Rembrandt van Rijn",
+      "year": "1642",
+      "history_and_about": "The painting was commissioned for the ceremonial hall of Amsterdam's civic militia. Rembrandt departed from the traditional static group portrait and created a dynamic scene full of movement. The work later became known as 'The Night Watch' because darkened varnish made it appear to depict a nighttime scene, although the event actually takes place during the day.",
+      "png": "/image/Rijksmuseum.jpg",
+      "alt": "The Night Watch by Rembrandt"
+    },
+    {
+      "title": "American Gothic",
+      "author": "Grant Wood",
+      "year": "1930",
+      "history_and_about": "The artist portrayed people he considered representative of rural America. The models were his sister and a local dentist. The painting became a symbol of resilience and the character of small-town America during the Great Depression.",
+      "png": "/image/Grant.jpg",
+      "alt": "American Gothic"
+    },
+    {
+      "title": "Netherlandish Proverbs",
+      "author": "Pieter Bruegel the Elder",
+      "year": "1559",
+      "history_and_about": "The painting serves as a visual encyclopedia of more than one hundred proverbs and idiomatic expressions. Bruegel used satire to highlight human foolishness and the absurdity of everyday behavior.",
+      "png": "/image/Pieter.jpg",
+      "alt": "Netherlandish Proverbs by Pieter Bruegel"
+    },
+    {
+      "title": "Back from Vacation",
+      "author": "Fyodor Reshetnikov",
+      "year": "1948",
+      "history_and_about": "The first part of Reshetnikov's famous trilogy. The painting depicts a young military cadet returning home for vacation and is filled with the optimism of the post-war period.",
+      "png": "/image/young.jpeg",
+      "alt": "Back from Vacation"
+    },
+    {
+      "title": "Poor Mark Again",
+      "author": "Fyodor Reshetnikov",
+      "year": "1952",
+      "history_and_about": "The central work of the trilogy. The scene revolves around a schoolboy who has received a failing grade, creating a more dramatic and realistic narrative.",
+      "png": "/image/Opyat.jpg",
+      "alt": "Poor Mark Again by Reshetnikov"
+    },
+    {
+      "title": "Retaking the Exam",
+      "author": "Fyodor Reshetnikov",
+      "year": "1954",
+      "history_and_about": "The final part of the trilogy. The protagonist is forced to study during summer vacation after failing his exams while his friends enjoy their holidays.",
+      "png": "/image/home.jpeg",
+      "alt": "Retaking the Exam"
+    },
+    {
+      "title": "The Persistence of Memory",
+      "author": "Salvador Dalí",
+      "year": "1931",
+      "history_and_about": "Dalí conceived the idea for this painting while reflecting on the fluid nature of time. The famous melting clocks symbolize the relativity of time and the fragility of human memory.",
+      "png": "/image/Memory.jpg",
+      "alt": "The Persistence of Memory by Salvador Dalí"
+    },
+    {
+      "title": "Cafe Terrace at Night",
+      "author": "Vincent van Gogh",
+      "year": "1888",
+      "history_and_about": "Painted in Arles, this work captures a nighttime scene without using black paint. Van Gogh relied on rich blues and bright yellows to convey the atmosphere of the illuminated café terrace.",
+      "png": "/image/Vincent.jpg",
+      "alt": "Cafe Terrace at Night"
+    },
+    {
+      "title": "The Tower of Babel",
+      "author": "Pieter Bruegel the Elder",
+      "year": "1563",
+      "history_and_about": "The painting illustrates the biblical story of humanity's attempt to build a tower reaching heaven. Bruegel emphasized the futility of human pride through deliberate architectural flaws in the structure.",
+      "png": "/image/Piete.jpg",
+      "alt": "The Tower of Babel by Pieter Bruegel"
+    },
+    {
+      "title": "Portrait of Emperor Rudolf II as Vertumnus",
+      "author": "Giuseppe Arcimboldo",
+      "year": "1590–1591",
+      "history_and_about": "The emperor is depicted as a composition of fruits, vegetables, and flowers. The work symbolizes harmony between nature, abundance, and imperial power.",
+      "png": "/image/Giuseppe.jpg",
+      "alt": "Portrait of Rudolf II as Vertumnus"
+    },
+    {
+      "title": "The Great Wave off Kanagawa",
+      "author": "Katsushika Hokusai",
+      "year": "1831",
+      "history_and_about": "The print depicts a massive wave threatening fishing boats while Mount Fuji stands calmly in the background. The contrast between the movement of the sea and the permanence of the mountain creates a powerful visual effect.",
+      "png": "/image/Kanagawa.jpg",
+      "alt": "The Great Wave off Kanagawa"
+    },
+    {
+      "title": "Oak Grove",
+      "author": "Ivan Shishkin",
+      "year": "1887",
+      "history_and_about": "The painting celebrates the grandeur of Russian nature and demonstrates Shishkin's remarkable ability to depict forest landscapes with extraordinary realism and detail.",
+      "png": "/image/Шишкин.jpg",
+      "alt": "Oak Grove by Ivan Shishkin"
+    }
+  ],
+  "year_label": "Year Created",
+  "author_label": "Author",
+  "zoom_in_hint": "Click on the painting to zoom in on details",
+  "zoom_out_hint": "Click to zoom out",
+  "disclaimer_text": "All information and images presented in the gallery are taken from open sources and are used solely for informational purposes.",
+  "disclaimer_copyright": "All rights to the materials belong to their respective owners."
 }
