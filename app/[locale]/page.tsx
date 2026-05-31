@@ -9,6 +9,9 @@ import Image from "next/image";
 interface PhotoItem {
     png: string;
     title?: string;
+    alt?: string;
+    width?: number;
+    height?: number;
 }
 
 export default function Home() {
