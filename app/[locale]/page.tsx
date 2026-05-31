@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "@/i18n/routing";
 import { useTranslations, useLocale, useMessages } from "next-intl";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useTransition } from "react";
 import Image from "next/image";
 
 interface PhotoItem {
@@ -24,6 +24,7 @@ export default function Home() {
 
     const [isDarkMode, setIsDarkMode] = useState(true);
     const [mounted, setMounted] = useState(false);
+    const [isPending, startTransition] = useTransition();
 
     // Переводим анимацию в CSS-стадию: 'idle' | 'fading-out'
     const [fadeState, setFadeState] = useState<'idle' | 'fading-out'>('idle');
@@ -38,16 +39,14 @@ export default function Home() {
 
     // Плавное переключение языка через Fade-анимацию
     const handleLanguageChange = (nextLocale: "ru" | "en") => {
-        if (nextLocale === locale || fadeState === 'fading-out') return;
+        if (nextLocale === locale || fadeState === "fading-out") return;
 
-        // Включаем затухание (opacity уходит в 0)
-        setFadeState('fading-out');
+        setFadeState("fading-out");
 
-        // Ждем, пока CSS-анимация затухания завершится (300мс)
         setTimeout(() => {
-            router.replace(pathname, { locale: nextLocale });
-
-            // Важно: мы НЕ сбрасываем mounted в false, чтобы не провоцировать появление черного экрана!
+            startTransition(() => {
+                router.replace(pathname, { locale: nextLocale });
+            });
         }, 300);
     };
 
@@ -78,10 +77,16 @@ export default function Home() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [router]);
 
+    useEffect(() => {
+        if (!isPending && fadeState === "fading-out") {
+            setFadeState("idle");
+        }
+    }, [isPending, fadeState]);
+
     // Чтобы избежать ошибки гидратации без черных экранов:
     // Показываем прозрачный экран с фоном текущей темы, пока клиент не подгрузился
     if (!mounted) {
-        return <div className="h-screen w-full bg-neutral-950 transition-colors duration-500" />;
+        return null;
     }
 
     return (
