@@ -9,6 +9,8 @@ interface PhotoItem {
     png: string;
     title: string;
     alt?: string;
+    width?: number;
+    height?: number;
 }
 
 export default function Gallery() {
@@ -16,11 +18,10 @@ export default function Gallery() {
     const messages = useMessages();
 
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
-    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
     const [mounted, setMounted] = useState(false);
 
-    const photo = ((messages as Record<string, any>)?.picture as PhotoItem[]) || [];
-
+    const photo = (messages as unknown as { picture?: PhotoItem[] })?.picture ?? [];
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme === "light") {
@@ -40,41 +41,52 @@ export default function Gallery() {
             <div>
                 <h1 className="text-3xl font-bold mb-10 text-center">Gallery</h1>
 
-                {/* Masonry */}
+                {/* Возвращаем Pinterest-раскладку (Masonry) через columns */}
                 <div className="columns-1 sm:columns-2 md:columns-3 gap-8 space-y-8 [column-fill:_balance] w-full max-w-7xl mx-auto">
-                    {photo.map((item, index) => (
-                        <div
-                            key={item.png || index}
-                            onClick={() => setActiveIndex(index)}
-                            className={`group break-inside-avoid block cursor-pointer rounded-2xl p-4 transition-all duration-300 hover:z-10 hover:scale-[1.0] select-none
-                                ${isDarkMode
-                                ? "bg-neutral-800 border border-neutral-700 shadow-xl shadow-black/60"
-                                : "bg-white border border-neutral-200 shadow-lg shadow-black/10"
-                            }`}
-                        >
-                            {/* Контейнер картинки */}
-                            <div className={`relative overflow-hidden rounded-xl transition-all duration-500 
-                                ${isDarkMode ? "border border-neutral-600" : "border border-neutral-300"}`}
+                    {photo.map((item, index) => {
+                        // Вычисляем пропорцию (aspect ratio) на основе данных из JSON.
+                        // Если данных вдруг нет, используем безопасный дефолт 1 (квадрат).
+                        const aspectRatio = item.width && item.height ? item.width / item.height : 1;
+
+                        return (
+                            <div
+                                key={item.png || index}
+                                onClick={() => setActiveIndex(index)}
+                                /* break-inside-avoid — критически важно, чтобы карточку не разрывало на две колонки */
+                                className={`group break-inside-avoid block cursor-pointer rounded-2xl p-4 transition-all duration-300 hover:scale-[1.05] select-none mb-8
+                                    ${isDarkMode
+                                    ? "bg-neutral-800 border border-neutral-700 shadow-xl shadow-black/60"
+                                    : "bg-white border border-neutral-200 shadow-lg shadow-black/10"
+                                }`}
                             >
-                                <Image
-                                    src={item.png}
-                                    alt={item.alt || item.title || "Gallery image"}
-                                    width={700}
-                                    height={700}
-                                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                                {/* Контейнер картинки с фиксированной пропорцией стороны */}
+                                <div
+                                    className={`relative overflow-hidden rounded-xl transition-all duration-500 
+                                        ${isDarkMode ? "border border-neutral-600" : "border border-neutral-300"}`}
+                                    /* Передаем пропорцию инлайном в CSS. Теперь контейнер ВСЕГДА займет
+                                       правильную высоту, даже если сама картинка еще не загрузилась */
+                                    style={{ aspectRatio: aspectRatio }}
+                                >
+                                    <Image
+                                        src={item.png}
+                                        alt={item.alt || item.title || "Gallery image"}
+                                        // Заполняем весь контейнер
+                                        fill
+                                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
 
-                                    // === Важные оптимизации загрузки ===
-                                    priority={index < 3}                    // Только первые 3 фото с высоким приоритетом
-                                    loading={index >= 3 ? "lazy" : "eager"} // Остальные — ленивая загрузка
-                                />
+                                        // Твои приоритеты загрузки
+                                        priority={index < 3}
+                                        loading={index < 3 ? "eager" : "lazy"}
+                                    />
+                                </div>
+
+                                <h2 className="text-sm font-bold text-center mt-4 tracking-widest uppercase opacity-90">
+                                    {item.title}
+                                </h2>
                             </div>
-
-                            <h2 className="text-sm font-bold text-center mt-4 tracking-widest uppercase opacity-90">
-                                {item.title}
-                            </h2>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
 

@@ -6,7 +6,9 @@
       "year": "1881",
       "history_and_about": "Charles Joseph Grips was a renowned Dutch genre painter who specialized in recreating the atmosphere of historic interiors inspired by the Dutch Golden Age of the 17th century. The painting 'A Domestic Interior' (1881) is a vivid example of his refined style. The artist depicted everyday domestic life with remarkable precision, carefully rendering kitchen utensils, decorative wall tiles, and the play of light and shadow. Such paintings were popular among wealthy European and American collectors of the late nineteenth century who admired the comfort, order, and tranquility of earlier times.",
       "png": "/image/Interior.jpg",
-      "alt": "Painting A Domestic Interior"
+      "alt": "Painting A Domestic Interior",
+      "width": 600,
+      "height": 730
     },
     {
       "title": "Tama the Cat",
@@ -14,7 +16,9 @@
       "year": "1926",
       "history_and_about": "Hiroaki Takahashi was one of the leading artists of the Shin-hanga movement, which revived traditional ukiyo-e printmaking in the twentieth century. In 1923, the devastating Great Kantō Earthquake destroyed many printing blocks and the workshop of publisher Shōzaburō Watanabe, with whom the artist collaborated. Created in 1926, 'Tama the Cat' became part of the effort to rebuild the publisher's catalog and create new works. The print portrays a beloved domestic cat with elegance, softness, and realism, reflecting the desire of Japanese society to capture peaceful and comforting moments after a national tragedy.",
       "png": "/image/cat.jpg",
-      "alt": "Woodblock print Tama the Cat"
+      "alt": "Woodblock print Tama the Cat",
+      "width": 800,
+      "height": 550
     },
     {
       "title": "Mona Lisa",
@@ -22,7 +26,9 @@
       "year": "1503–1506 (with revisions until 1519)",
       "history_and_about": "The painting is generally believed to depict Lisa Gherardini, the wife of Florentine silk merchant Francesco del Giocondo. Leonardo never delivered the work to the patron and instead kept refining it throughout his life. The painting is famous for its use of sfumato, a technique that softens outlines and transitions, and for the mysterious smile that appears to change depending on the viewer's perspective. Its worldwide fame increased dramatically after its theft from the Louvre in 1911 by Vincenzo Peruggia.",
       "png": "/image/Mona.jpg",
-      "alt": "Mona Lisa"
+      "alt": "Mona Lisa",
+      "width": 600,
+      "height": 890
     },
     {
       "title": "The Starry Night",
@@ -30,7 +36,9 @@
       "year": "1889",
       "history_and_about": "The painting was created at the Saint-Paul-de-Mausole asylum in Saint-Rémy-de-Provence during a difficult period of the artist's life. Van Gogh painted the work from memory and imagination, inspired by the view from his window. The swirling sky and dynamic forms are often interpreted as reflections of the artist's emotions, spiritual search, and fascination with the vastness of the universe.",
       "png": "/image/Van.jpg",
-      "alt": "The Starry Night by Vincent van Gogh"
+      "alt": "The Starry Night by Vincent van Gogh",
+      "width": 800,
+      "height": 635
     },
     {
       "title": "Beach Scene (View of Scheveningen Beach)",
@@ -38,7 +46,9 @@
       "year": "1641",
       "history_and_about": "This painting by the Dutch marine artist became famous after a restoration discovery in 2014. During the cleaning process, conservators uncovered a beached whale that had been painted over in the past. The discovery completely changed the interpretation of the scene and restored the original meaning of the artwork.",
       "png": "/image/View.jpg",
-      "alt": "Beach Scene"
+      "alt": "Beach Scene",
+      "width": 800,
+      "height": 590
     },
     {
       "title": "The Militia Company of Captain Frans Banning Cocq and Lieutenant Willem van Ruytenburch (The Night Watch)",
@@ -46,7 +56,9 @@
       "year": "1642",
       "history_and_about": "The painting was commissioned for the ceremonial hall of Amsterdam's civic militia. Rembrandt departed from the traditional static group portrait and created a dynamic scene full of movement. The work later became known as 'The Night Watch' because darkened varnish made it appear to depict a nighttime scene, although the event actually takes place during the day.",
       "png": "/image/Rijksmuseum.jpg",
-      "alt": "The Night Watch by Rembrandt"
+      "alt": "The Night Watch by Rembrandt",
+      "width": 900,
+      "height": 760
     },
     {
       "title": "American Gothic",
@@ -54,7 +66,9 @@
       "year": "1930",
       "history_and_about": "The artist portrayed people he considered representative of rural America. The models were his sister and a local dentist. The painting became a symbol of resilience and the character of small-town America during the Great Depression.",
       "png": "/image/Grant.jpg",
-      "alt": "American Gothic"
+      "alt": "American Gothic",
+      "width": 600,
+      "height": 715
     },
     {
       "title": "Netherlandish Proverbs",
@@ -62,7 +76,9 @@
       "year": "1559",
       "history_and_about": "The painting serves as a visual encyclopedia of more than one hundred proverbs and idiomatic expressions. Bruegel used satire to highlight human foolishness and the absurdity of everyday behavior.",
       "png": "/image/Pieter.jpg",
-      "alt": "Netherlandish Proverbs by Pieter Bruegel"
+      "alt": "Netherlandish Proverbs by Pieter Bruegel",
+      "width": 900,
+      "height": 625
     },
     {
       "title": "Back from Vacation",
@@ -70,7 +86,9 @@
       "year": "1948",
       "history_and_about": "The first part of Reshetnikov's famous trilogy. The painting depicts a young military cadet returning home for vacation and is filled with the optimism of the post-war period.",
       "png": "/image/young.jpeg",
-      "alt": "Back from Vacation"
+      "alt": "Back from Vacation",
+      "width": 600,
+      "height": 730
     },
     {
       "title": "Poor Mark Again",
@@ -78,7 +96,9 @@
       "year": "1952",
       "history_and_about": "The central work of the trilogy. The scene revolves around a schoolboy who has received a failing grade, creating a more dramatic and realistic narrative.",
       "png": "/image/Opyat.jpg",
-      "alt": "Poor Mark Again by Reshetnikov"
+      "alt": "Poor Mark Again by Reshetnikov",
+      "width": 650,
+      "height": 800
     },
     {
       "title": "Retaking the Exam",
@@ -86,7 +106,9 @@
       "year": "1954",
       "history_and_about": "The final part of the trilogy. The protagonist is forced to study during summer vacation after failing his exams while his friends enjoy their holidays.",
       "png": "/image/home.jpeg",
-      "alt": "Retaking the Exam"
+      "alt": "Retaking the Exam",
+      "width": 600,
+      "height": 720
     },
     {
       "title": "The Persistence of Memory",
@@ -94,7 +116,9 @@
       "year": "1931",
       "history_and_about": "Dalí conceived the idea for this painting while reflecting on the fluid nature of time. The famous melting clocks symbolize the relativity of time and the fragility of human memory.",
       "png": "/image/Memory.jpg",
-      "alt": "The Persistence of Memory by Salvador Dalí"
+      "alt": "The Persistence of Memory by Salvador Dalí",
+      "width": 800,
+      "height": 600
     },
     {
       "title": "Cafe Terrace at Night",
@@ -102,7 +126,9 @@
       "year": "1888",
       "history_and_about": "Painted in Arles, this work captures a nighttime scene without using black paint. Van Gogh relied on rich blues and bright yellows to convey the atmosphere of the illuminated café terrace.",
       "png": "/image/Vincent.jpg",
-      "alt": "Cafe Terrace at Night"
+      "alt": "Cafe Terrace at Night",
+      "width": 600,
+      "height": 750
     },
     {
       "title": "The Tower of Babel",
@@ -110,7 +136,9 @@
       "year": "1563",
       "history_and_about": "The painting illustrates the biblical story of humanity's attempt to build a tower reaching heaven. Bruegel emphasized the futility of human pride through deliberate architectural flaws in the structure.",
       "png": "/image/Piete.jpg",
-      "alt": "The Tower of Babel by Pieter Bruegel"
+      "alt": "The Tower of Babel by Pieter Bruegel",
+      "width": 850,
+      "height": 630
     },
     {
       "title": "Portrait of Emperor Rudolf II as Vertumnus",
@@ -118,7 +146,9 @@
       "year": "1590–1591",
       "history_and_about": "The emperor is depicted as a composition of fruits, vegetables, and flowers. The work symbolizes harmony between nature, abundance, and imperial power.",
       "png": "/image/Giuseppe.jpg",
-      "alt": "Portrait of Rudolf II as Vertumnus"
+      "alt": "Portrait of Rudolf II as Vertumnus",
+      "width": 600,
+      "height": 745
     },
     {
       "title": "The Great Wave off Kanagawa",
@@ -126,7 +156,9 @@
       "year": "1831",
       "history_and_about": "The print depicts a massive wave threatening fishing boats while Mount Fuji stands calmly in the background. The contrast between the movement of the sea and the permanence of the mountain creates a powerful visual effect.",
       "png": "/image/Kanagawa.jpg",
-      "alt": "The Great Wave off Kanagawa"
+      "alt": "The Great Wave off Kanagawa",
+      "width": 850,
+      "height": 580
     },
     {
       "title": "Oak Grove",
@@ -134,7 +166,9 @@
       "year": "1887",
       "history_and_about": "The painting celebrates the grandeur of Russian nature and demonstrates Shishkin's remarkable ability to depict forest landscapes with extraordinary realism and detail.",
       "png": "/image/Шишкин.jpg",
-      "alt": "Oak Grove by Ivan Shishkin"
+      "alt": "Oak Grove by Ivan Shishkin",
+      "width": 900,
+      "height": 540
     }
   ],
   "year_label": "Year Created",
