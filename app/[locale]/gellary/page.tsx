@@ -53,7 +53,7 @@ export default function Gallery() {
                                 key={item.png || index}
                                 onClick={() => setActiveIndex(index)}
                                 /* break-inside-avoid — критически важно, чтобы карточку не разрывало на две колонки */
-                                className={`group break-inside-avoid block cursor-pointer rounded-2xl p-4 transition-all duration-300 hover:scale-[1.05] select-none mb-8
+                                className={`group break-inside-avoid block cursor-pointer rounded-2xl p-4 transition-all duration-300 hover:scale-[1.0] select-none mb-8
                                     ${isDarkMode
                                     ? "bg-neutral-800 border border-neutral-700 shadow-xl shadow-black/60"
                                     : "bg-white border border-neutral-200 shadow-lg shadow-black/10"
