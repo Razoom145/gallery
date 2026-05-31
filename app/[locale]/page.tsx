@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "@/i18n/routing";
 import { useTranslations, useLocale, useMessages } from "next-intl";
-import { useEffect, useState, useRef, useTransition } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 interface PhotoItem {
@@ -24,10 +24,11 @@ export default function Home() {
 
     const [isDarkMode, setIsDarkMode] = useState(true);
     const [mounted, setMounted] = useState(false);
-    const [isChangingLocale, setIsChangingLocale] = useState(false);
+
+    // Переводим анимацию в CSS-стадию: 'idle' | 'fading-out'
+    const [fadeState, setFadeState] = useState<'idle' | 'fading-out'>('idle');
 
     const hasNavigatedRef = useRef(false);
-    const [, startTransition] = useTransition(); // Для плавного обновления
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
@@ -35,20 +36,19 @@ export default function Home() {
         setMounted(true);
     }, []);
 
-    // Плавное переключение языка
+    // Плавное переключение языка через Fade-анимацию
     const handleLanguageChange = (nextLocale: "ru" | "en") => {
-        if (nextLocale === locale) return;
+        if (nextLocale === locale || fadeState === 'fading-out') return;
 
-        setIsChangingLocale(true);
+        // Включаем затухание (opacity уходит в 0)
+        setFadeState('fading-out');
 
-        startTransition(() => {
+        // Ждем, пока CSS-анимация затухания завершится (300мс)
+        setTimeout(() => {
             router.replace(pathname, { locale: nextLocale });
 
-            // Убираем индикатор через небольшую задержку
-            setTimeout(() => {
-                setIsChangingLocale(false);
-            }, 400);
-        });
+            // Важно: мы НЕ сбрасываем mounted в false, чтобы не провоцировать появление черного экрана!
+        }, 300);
     };
 
     const toggleTheme = () => {
@@ -57,9 +57,9 @@ export default function Home() {
         localStorage.setItem("theme", nextTheme ? "dark" : "light");
     };
 
-    // Prefetch
+    // Prefetch страницы галереи
     useEffect(() => {
-        router.prefetch("/gellary");
+        router.prefetch("/gellary"); // Перепроверьте написание папки gellary/gallery в проекте!
     }, [router]);
 
     // Scroll to gallery
@@ -70,7 +70,7 @@ export default function Home() {
             if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80) {
                 hasNavigatedRef.current = true;
                 window.removeEventListener("scroll", handleScroll);
-                router.push("/gellary"); // ← исправил опечатку
+                router.push("/gellary");
             }
         };
 
@@ -78,20 +78,28 @@ export default function Home() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [router]);
 
+    // Чтобы избежать ошибки гидратации без черных экранов:
+    // Показываем прозрачный экран с фоном текущей темы, пока клиент не подгрузился
     if (!mounted) {
-        return <div className="h-screen w-full bg-neutral-950" />;
+        return <div className="h-screen w-full bg-neutral-950 transition-colors duration-500" />;
     }
 
     return (
-        <main className={`relative min-h-[101vh] w-full flex items-center justify-center p-8 transition-all duration-500 ${
-            isDarkMode ? "bg-neutral-950 text-white" : "bg-neutral-50 text-black"
-        } ${isChangingLocale ? "opacity-70" : "opacity-100"}`}>
-
+        <main
+            className={`relative min-h-[101vh] w-full flex items-center justify-center p-8 select-none
+                /* Плавное изменение цвета темы */
+                transition-colors duration-500 
+                /* Элегантная CSS-анимация при изменении языка */
+                transition-opacity duration-300 ease-in-out
+                ${isDarkMode ? "bg-neutral-950 text-white" : "bg-neutral-50 text-black"} 
+                ${fadeState === "fading-out" ? "opacity-0 pointer-events-none" : "opacity-100"}
+            `}
+        >
             {/* Переключение языков */}
             <div className="absolute top-8 right-8 flex gap-3 z-20">
                 <button
                     onClick={() => handleLanguageChange("ru")}
-                    disabled={isChangingLocale}
+                    disabled={fadeState === 'fading-out'}
                     className={`px-4 py-1.5 text-sm rounded border transition-all active:scale-95 ${
                         locale === "ru"
                             ? (isDarkMode ? "bg-white text-black font-bold border-white" : "bg-black text-white font-bold border-black")
@@ -102,7 +110,7 @@ export default function Home() {
                 </button>
                 <button
                     onClick={() => handleLanguageChange("en")}
-                    disabled={isChangingLocale}
+                    disabled={fadeState === 'fading-out'}
                     className={`px-4 py-1.5 text-sm rounded border transition-all active:scale-95 ${
                         locale === "en"
                             ? (isDarkMode ? "bg-white text-black font-bold border-white" : "bg-black text-white font-bold border-black")
@@ -114,7 +122,7 @@ export default function Home() {
             </div>
 
             {/* Название */}
-            <article className="text-6xl md:text-8xl font-serif tracking-widest uppercase select-none transition-opacity duration-300">
+            <article className="text-6xl md:text-8xl font-serif tracking-widest uppercase select-none">
                 Gallery
             </article>
 
