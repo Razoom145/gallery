@@ -19,7 +19,7 @@ export default function Gallery() {
     const [isDarkMode, setIsDarkMode] = useState(true);
     const [mounted, setMounted] = useState(false);
 
-    const photo = ((messages as Record<string, any>)?.picture as PhotoItem[]) || [];
+    const photo = ((messages as { picture?: PhotoItem[] }).picture ?? []);
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
@@ -44,9 +44,9 @@ export default function Gallery() {
                 <div className="columns-1 sm:columns-2 md:columns-3 gap-8 space-y-8 [column-fill:_balance] w-full max-w-7xl mx-auto">
                     {photo.map((item, index) => (
                         <div
-                            key={item.png || index}
+                            key={item.png}
                             onClick={() => setActiveIndex(index)}
-                            className={`group break-inside-avoid block cursor-pointer rounded-2xl p-4 transition-all duration-300 hover:z-10 hover:scale-[1.0] select-none
+                            className={`group break-inside-avoid block cursor-pointer rounded-2xl p-4 transition-all duration-300 hover:z-10  select-none
                                 ${isDarkMode
                                 ? "bg-neutral-800 border border-neutral-700 shadow-xl shadow-black/60"
                                 : "bg-white border border-neutral-200 shadow-lg shadow-black/10"

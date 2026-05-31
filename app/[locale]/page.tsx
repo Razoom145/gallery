@@ -1,18 +1,23 @@
 "use client";
 
 import { usePathname, useRouter } from "@/i18n/routing";
-import { useTranslations, useLocale } from "next-intl";
+import {useTranslations, useLocale, useMessages} from "next-intl";
 import { useEffect, useState } from "react";
+import {useRef} from "react";
+import Image from "next/image";
 
 export default function Home() {
     const router = useRouter();
     const pathname = usePathname();
     const locale = useLocale();
     const t = useTranslations();
+    const messages = useMessages();
+    const photo = ((messages as { picture?: PhotoItem[] }).picture ?? []);
 
     const [isDarkMode, setIsDarkMode] = useState(true);
     // Дополнительное состояние, чтобы избежать конфликтов гидратации SSR/CSR
     const [mounted, setMounted] = useState(false);
+    const hasNavigatedRef = useRef(false);
 
     // Читаем тему и ставим флаг mounted только на клиенте
     useEffect(() => {
@@ -32,17 +37,23 @@ export default function Home() {
         setIsDarkMode(nextTheme);
         localStorage.setItem("theme", nextTheme ? "dark" : "light");
     };
+    useEffect(() => {
+        router.prefetch("/gellary");
+    }, [router]);
 
     useEffect(() => {
         const handleScroll = () => {
+            if (hasNavigatedRef.current) return;
+
             const scrolledToBottom =
                 window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
 
             if (scrolledToBottom) {
-                // ВНИМАНИЕ: Проверь, как называется папка в app: gallery или gellary
+                hasNavigatedRef.current = true;
                 router.push("/gellary");
             }
         };
+
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, [router]);
@@ -105,6 +116,18 @@ export default function Home() {
             <div className="absolute bottom-8 right-8 flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-500 animate-pulse select-none z-10">
                 <span>Scroll to explore</span>
                 <span className="text-base animate-bounce">↓</span>
+            </div>
+            <div className="hidden">
+                {photo.slice(0, 6).map((photo) => (
+                    <Image
+                        key={photo.png}
+                        src={photo.png}
+                        alt=""
+                        width={100}
+                        height={100}
+                        priority
+                    />
+                ))}
             </div>
 
         </main>
