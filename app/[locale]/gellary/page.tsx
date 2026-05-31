@@ -5,7 +5,6 @@ import { useMessages, useTranslations } from "next-intl";
 import Image from "next/image";
 import Lenta from "@/components/modals/gallery_scroll";
 
-// Описание интерфейса для строгой типизации данных из JSON
 interface PhotoItem {
     png: string;
     title: string;
@@ -20,9 +19,8 @@ export default function Gallery() {
 
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
-    const [mounted, setMounted] = useState<boolean>(false);
+    const [mounted, setMounted] = useState(false);
 
-    // Безопасное приведение типов, исключающее ошибки компиляции TypeScript
     const photo = (messages as unknown as { picture?: PhotoItem[] })?.picture ?? [];
 
     useEffect(() => {
@@ -44,45 +42,37 @@ export default function Gallery() {
             <div>
                 <h1 className="text-3xl font-bold mb-10 text-center">Gallery</h1>
 
-                {/* Pinterest-раскладка (Masonry) через CSS Columns */}
-                <div className="columns-1 sm:columns-2 md:columns-3 gap-8 space-y-8 [column-fill:_balance] w-full max-w-7xl mx-auto">
+                {/* Masonry — Pinterest стиль */}
+                <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-8 space-y-8 [column-fill:_balance] w-full max-w-7xl mx-auto overflow-visible">
                     {photo.map((item, index) => {
-                        // Вычисляем пропорцию (aspect ratio) на основе данных из JSON.
-                        // Если данных нет, используем безопасный дефолт 1 (квадрат).
-                        const aspectRatio = item.width && item.height ? item.width / item.height : 1;
+                        const aspectRatio = item.width && item.height
+                            ? item.width / item.height
+                            : 1;
 
                         return (
                             <div
                                 key={item.png || index}
                                 onClick={() => setActiveIndex(index)}
-                                /* break-inside-avoid — не дает разрывать карточку между колонками.
-                                  transform-gpu и backface-hidden — фиксируют композитные слои в браузере,
-                                  что предотвращает "исчезновение" или сдвиг соседних карточек (например, Дали) при ховере.
-                                */
-                                className={`group break-inside-avoid block cursor-pointer rounded-2xl p-4 transition-all duration-300 hover:scale-[1.02] transform-gpu backface-hidden select-none mb-8
-                                    ${isDarkMode
-                                    ? "bg-neutral-800 border border-neutral-700 shadow-xl shadow-black/60"
+                                className={`group break-inside-avoid block cursor-pointer rounded-2xl p-4 transition-all duration-300 
+                                           hover:scale-[1.04] hover:z-20 active:scale-[0.98] select-none mb-8
+                                           isolation-isolate
+                                           ${isDarkMode
+                                    ? "bg-neutral-800 border border-neutral-700 shadow-xl shadow-black/70"
                                     : "bg-white border border-neutral-200 shadow-lg shadow-black/10"
                                 }`}
                             >
-                                {/* Контейнер картинки с фиксированной пропорцией стороны */}
+                                {/* Контейнер картинки */}
                                 <div
-                                    className={`relative overflow-hidden rounded-xl transition-all duration-500 
-                                        ${isDarkMode ? "border border-neutral-600 bg-neutral-900" : "border border-neutral-300 bg-neutral-50"}`}
-                                    /* Передаем пропорцию инлайном. Контейнер займет нужную высоту до загрузки картинки */
-                                    style={{ aspectRatio: aspectRatio }}
+                                    className={`relative overflow-hidden rounded-xl transition-shadow duration-500
+                                        ${isDarkMode ? "border border-neutral-600" : "border border-neutral-300"}`}
+                                    style={{ aspectRatio: aspectRatio.toString() }}
                                 >
                                     <Image
                                         src={item.png}
                                         alt={item.alt || item.title || "Gallery image"}
                                         fill
                                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                                        /* object-cover заполняет блок.
-                                          transform-gpu здесь дублирует аппаратное ускорение для самого изображения.
-                                        */
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-
-                                        // Оптимизация приоритетов загрузки Next.js
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                                         priority={index < 3}
                                         loading={index < 3 ? "eager" : "lazy"}
                                     />
